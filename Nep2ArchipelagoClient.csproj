@@ -1,0 +1,44 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net9.0-windows</TargetFramework>
+    <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+    <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
+    <LangVersion>12.0</LangVersion>
+    <Nullable>enable</Nullable>
+    <AllowUnsafeBlocks>True</AllowUnsafeBlocks>
+    <OutputPath>$(RELOADEDIIMODS)/Nep2ArchipelagoClient</OutputPath>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <ReloadedILLink>false</ReloadedILLink>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ReloadedLinkRoots Include="Nep2ArchipelagoClient" />
+  </ItemGroup>
+
+  <Import Project="Reloaded.Trimming.targets" />
+  <Import Project="Reloaded.Checks.targets" />
+
+  <ItemGroup>
+    <None Remove="ModConfig.json" />
+    <None Remove="Publish.ps1" />
+    <None Remove="BuildLinked.ps1" />
+    <None Remove="Reloaded.Trimming.targets" />
+    <None Remove="Reloaded.Checks.targets" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="ModConfig.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.NET.ILLink.Tasks" Version="9.0.3" />
+    <PackageReference Include="Reloaded.Hooks" Version="4.3.3" />
+    <PackageReference Include="Reloaded.Memory" Version="9.4.3" />
+    <PackageReference Include="Reloaded.Mod.Interfaces" Version="2.4.0" ExcludeAssets="runtime" />
+    <PackageReference Include="Reloaded.SharedLib.Hooks" Version="1.9.0" />
+  </ItemGroup>
+
+</Project>
