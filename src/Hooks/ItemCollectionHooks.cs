@@ -59,7 +59,7 @@ public class ItemCollectionHooks
     public static int OnGetGatherSpot(int eax, int edx)
     {
         long locationId = (eax * 10) + edx + 1;
-        Console.WriteLine($"[Nep2AP] Gather: dungeon={eax} flag={edx} -> AP location {locationId}");
+        Console.WriteLine($"[Nep2AP] Gather: dungeon={eax} flag={edx}");
 
         // TODO: wire up to APClient, e.g.:
         // Mod.APClient.SendLocation(locationId);
@@ -70,7 +70,7 @@ public class ItemCollectionHooks
     public static int OnGetDungeonTreasureId(int eax, int ecx)
     {
         long locationId = TreasureBaseID + ecx;
-        Console.WriteLine($"[Nep2AP] Treasure: ID={ecx} -> AP location {locationId}");
+        Console.WriteLine($"[Nep2AP] Treasure: ID={ecx}");
 
         // TODO: wire up to APClient, e.g.:
         // Mod.APClient.SendLocation(locationId);
@@ -99,7 +99,7 @@ public class ItemCollectionHooks
             "use32",
             "pushad",
             "pushfd",
-            "mov edx,[ebp+0x0C]",
+            "mov edx,[ebp+12]",
             $"{hooks.Utilities.GetAbsoluteCallMnemonics(OnGetGatherSpot, out _onGatherSpot)}",
             "popfd",
             "popad",

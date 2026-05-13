@@ -37,7 +37,7 @@ internal class EnemyHooks
     {
         var enemyId = esi & 0xFFFF;
         long apLocationId = EnemyBaseID + enemyId;
-        Console.WriteLine($"[Nep2AP] Killed enemy ID {enemyId} -> AP location {apLocationId}");
+        Console.WriteLine($"[Nep2AP] Killed enemy ID {enemyId}");
 
         // TODO: wire up to APClient once it is implemented, e.g.:
         // Mod.APClient.SendLocation(apLocationId);
